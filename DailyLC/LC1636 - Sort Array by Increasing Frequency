@@ -1,0 +1,8 @@
+class Solution:
+    def frequencySort(self, nums: List[int]) -> List[int]:
+        frequency = Counter(nums)
+    
+    # Sort based on frequency first (increasing), then by value (decreasing)
+        sorted_nums = sorted(nums, key=lambda x: (frequency[x], -x))
+    
+        return sorted_nums
