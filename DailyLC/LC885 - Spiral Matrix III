@@ -1,0 +1,26 @@
+from typing import List
+
+class Solution:
+    def spiralMatrixIII(self, rows: int, cols: int, rStart: int, cStart: int) -> List[List[int]]:
+        directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+        result = []
+        r, c = rStart, cStart
+        step = 0
+        d = 0
+        
+        result.append([r, c])
+        
+        while len(result) < rows * cols:
+            if d == 0 or d == 2:
+                step += 1
+            
+            for _ in range(step):
+                r += directions[d][0]
+                c += directions[d][1]
+                
+                if 0 <= r < rows and 0 <= c < cols:
+                    result.append([r, c])
+                    
+            d = (d + 1) % 4
+        
+        return result
