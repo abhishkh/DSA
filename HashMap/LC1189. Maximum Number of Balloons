@@ -1,0 +1,14 @@
+from collections import Counter
+
+class Solution:
+    def maxNumberOfBalloons(self, text: str) -> int:
+        d = Counter("balloon")
+        text_dict = Counter(text)
+        res = len(text)
+
+        for char in d:
+            if char not in text_dict:
+                return 0
+            res  = min(res, text_dict[char] // d[char])
+
+        return res
